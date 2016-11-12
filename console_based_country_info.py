@@ -3,14 +3,38 @@ class CountryInfoSearch(object):
         self._base_url = 'https://restcountries.eu/rest/v1/'
         self._options = options
 
-    def all_countries_info(self):
-        if self._options == 'all':
-            self._base_url += self._options
-            return self._base_url
+    @property
+    def get_url(self):
+        return self._base_url
 
     @property
     def specific_country_info(self):
-        self._base_url += self._options
+        base_url = 'https://restcountries.eu/rest/v1/name/{}?fullText=true'
+        self._base_url = base_url.format(self._options)
+        return self
+
+    @property
+    def all_countries_info(self):
+        if self._options == 'all':
+            self._base_url += self._options
+            return self
+
+    @property
+    def get_country_info_by_calling_code(self):
+        base_url = 'https://restcountries.eu/rest/v1/callingcode/{}'
+        self._base_url = base_url.format(self._options)
+        return self
+
+    @property
+    def get_country_info_by_lang(self):
+        base_url = 'https://restcountries.eu/rest/v1/lang/{}'
+        self._base_url = base_url.format(self._options)
+        return self
+
+    @property
+    def get_country_info_by_country_codes(self):
+        base_url = 'https://restcountries.eu/rest/v1/alpha?codes={}'
+        self._base_url = base_url.format(';'.join(self._options))
         return self
 
     def get_requested_data(self):
