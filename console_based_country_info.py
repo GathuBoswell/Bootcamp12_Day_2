@@ -37,6 +37,15 @@ class CountryInfoSearch(object):
         self._base_url = base_url.format(';'.join(self._options))
         return self
 
+    @property
+    def get_country_info_by_country_codes(self):
+        base_url = 'https://restcountries.eu/rest/v1/alpha?codes={}'
+        if type(self._options) == list:
+            self._base_url = base_url.format(';'.join(self._options))
+        else:
+            self._base_url = base_url.format(self._options)
+        return self
+
     def get_requested_data(self):
         import requests
         response = requests.get(self._base_url)
