@@ -12,7 +12,9 @@ class CountryInfoTestCase(unittest.TestCase):
         self.assertEqual(countries_bordering_morocco.all_country_info(), 'https://restcountries.eu/rest/v1/all')
 
     def test_specific_country_data(self):
-        all_kenya_data = CountryInfoSearch('Kenya')
+        kenya_data = CountryInfoSearch('Kenya')
+        all_kenya_data = kenya_data.specific_country_data()
+        self.assertEqual(all_kenya_data, CountryInfoSearch('https://restcountries.eu/rest/v1/name/Kenya?fullText=true'))
 
 
 if __name__ == '__main__':
