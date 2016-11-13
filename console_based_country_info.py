@@ -8,13 +8,13 @@ class CountryInfoSearch(object):
         return self._base_url
 
     @property
-    def specific_country_info(self):
+    def get_specific_country_info(self):
         base_url = 'https://restcountries.eu/rest/v1/name/{}?fullText=true'
         self._base_url = base_url.format(self._options)
         return self
 
     @property
-    def all_countries_info(self):
+    def get_all_countries_info(self):
         if self._options == 'all':
             self._base_url += self._options
             return self
@@ -68,8 +68,28 @@ class CountryInfoSearch(object):
         search_results = response.json()
         return search_results
 
+    def print_data(self, search_data):
+        print("{:<20} {:<20} {:<15} {:<18} {:<15} {:<15} {:<15} {:<25} {:<15}".format('Country', 'Capital',
+                                                          'Region', 'SubReg', 'Population',
+                                                          'Area(sqKM)', 'Codes',
+                                                          'Currency', 'Lang'))
+        for item in search_data:
+            print("{:<20} {:<20} {:<15} {:<18} {:<15d} {:<15} {:<15} {:<25} {:<15}".format(item['name'],
+                                          item['capital'], item['region'],
+                                          item['subregion'], item['population'],
+                                          item['area'], str(item['callingCodes']),
+                                          str(item['currencies']),str(item['languages'])))
 
 class RefinedSearch(CountryInfoSearch):
-    def __init__(self, options):
+    def __init__(self, options, refine_params):
+        self._refine_params = refine_params
         super().__init__(options)
-        pass
+
+
+def main():
+    kenya_data = CountryInfoSearch('1')
+    results = kenya_data.get_country_info_by_calling_code.get_requested_data()
+    kenya_data.print_data(results)
+
+
+if __name__ == '__main__':main()
