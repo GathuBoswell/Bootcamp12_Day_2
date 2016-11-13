@@ -39,12 +39,12 @@ class CountryInfoSearch(object):
 
     @property
     def get_country_info_by_country_codes(self):
-        base_url = 'https://restcountries.eu/rest/v1/alpha?codes={}'
-        if type(self._options) == list:
-            self._base_url = base_url.format(';'.join(self._options))
-        elif type(self._options) == str:
-            base_url = 'https://restcountries.eu/rest/v1/alpha/{}'
-            self._base_url = base_url.format(self._options)
+        base_url = 'https://restcountries.eu/rest/v1/alpha{}'
+        if type(self._options) in [list, tuple, set]:
+            self._base_url = base_url.format('?codes=' +
+                                             ';'.join(self._options))
+        else:
+            self._base_url = base_url.format('/' + self._options)
         return self
 
     @property
@@ -73,13 +73,21 @@ class CountryInfoSearch(object):
                                                           'Region', 'SubReg', 'Population',
                                                           'Area(sqKM)', 'Codes',
                                                           'Currency', 'Lang'))
+        if type(search_data) == list:
+            for item in search_data:
+                print("{:<30.29s} {:<20} {:<15} {:<18} {:<15d} {:<15} {:<15s} {:<25s} {:<10s}".format(item['name'],
+                                              item['capital'], item['region'],
+                                              item['subregion'], int(item['population']),
+                                              str(item['area']), str(item['callingCodes']),
+                                              str(item['currencies']),str(item['languages'])))
+        elif type(search_data) == dict:
+            print("{:<30.29s} {:<20} {:<15} {:<18}"
+                  "{:<15d} {:<15} {:<15s} {:<25s} {:<10s}".format(search_data['name'],
+                                search_data['capital'], search_data['region'],
+                                search_data['subregion'], int(search_data['population']),
+                                str(search_data['area']),str(search_data['callingCodes']),
+                                str(search_data['currencies']), str(search_data['languages'])))
 
-        for item in search_data:
-            print("{:<30.29s} {:<20} {:<15} {:<18} {:<15d} {:<15} {:<15s} {:<25s} {:<10s}".format(item['name'],
-                                          item['capital'], item['region'],
-                                          item['subregion'], int(item['population']),
-                                          str(item['area']), str(item['callingCodes']),
-                                          str(item['currencies']),str(item['languages'])))
 
 
 
