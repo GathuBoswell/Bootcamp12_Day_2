@@ -42,7 +42,7 @@ class CountryInfoSearch(object):
         base_url = 'https://restcountries.eu/rest/v1/alpha?codes={}'
         if type(self._options) == list:
             self._base_url = base_url.format(';'.join(self._options))
-        else:
+        elif type(self._options) == str:
             base_url = 'https://restcountries.eu/rest/v1/alpha/{}'
             self._base_url = base_url.format(self._options)
         return self
@@ -53,13 +53,13 @@ class CountryInfoSearch(object):
         self._base_url = base_url.format(self._options)
         return self
 
-    def get_country_info_by_region_or_sub_region(self, reg_or_sub, name):
+    def get_country_info_by_region_or_sub_region(self, reg_or_sub):
         if reg_or_sub == 'region':
             base_url = 'https://restcountries.eu/rest/v1/region/{}'
-            self._base_url = base_url.format(name)
-        elif reg_or_sub == 'sub':
+            self._base_url = base_url.format(self._options)
+        elif reg_or_sub == 'subregion':
             base_url = 'https://restcountries.eu/rest/v1/subregion/{}'
-            self._base_url = base_url.format(name)
+            self._base_url = base_url.format(self._options)
         return self
 
     def get_requested_data(self):
@@ -69,19 +69,18 @@ class CountryInfoSearch(object):
         return search_results
 
     def print_data(self, search_data):
-        print("{:<20} {:<20} {:<15} {:<18} {:<15} {:<15} {:<15} {:<25} {:<15}".format('Country', 'Capital',
+        print("{:<30} {:<20} {:<15} {:<18} {:<15} {:<15} {:<15} {:<25} {:<10}".format('Country', 'Capital',
                                                           'Region', 'SubReg', 'Population',
                                                           'Area(sqKM)', 'Codes',
                                                           'Currency', 'Lang'))
+
         for item in search_data:
-            try:
-                print("{:<20} {:<20} {:<15} {:<18} {:<15d} {:<15f} {:<15s} {:<25s} {:<15s}".format(item['name'],
-                                              item['capital'], item['region'],
-                                              item['subregion'], int(item['population']),
-                                              float(item['area']), str(item['callingCodes']),
-                                              str(item['currencies']),str(item['languages'])))
-            except TypeError:
-                continue
+            print("{:<30.29s} {:<20} {:<15} {:<18} {:<15d} {:<15} {:<15s} {:<25s} {:<10s}".format(item['name'],
+                                          item['capital'], item['region'],
+                                          item['subregion'], int(item['population']),
+                                          str(item['area']), str(item['callingCodes']),
+                                          str(item['currencies']),str(item['languages'])))
+
 
 
 class RefinedSearch(CountryInfoSearch):
@@ -91,8 +90,8 @@ class RefinedSearch(CountryInfoSearch):
 
 
 def main():
-    kenya_data = CountryInfoSearch('africa')
-    results = kenya_data.get_country_info_by_region_or_sub_region('region', 'africa').get_requested_data()
+    kenya_data = CountryInfoSearch('rus')
+    results = kenya_data.get_country_info_by_country_codes.get_requested_data()
     kenya_data.print_data(results)
 
 
