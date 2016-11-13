@@ -19,7 +19,7 @@ class CountryInfoTestCase(unittest.TestCase):
     def test_all_countries_info_by_single_lang(self):
         countries_code_search = CountryInfoSearch('rus')
         resulting_url = countries_code_search.get_country_info_by_country_codes.get_url
-        self.assertEqual(resulting_url, 'https://restcountries.eu/rest/v1/alpha?codes=rus')
+        self.assertEqual(resulting_url, 'https://restcountries.eu/rest/v1/alpha/rus')
 
     def test_all_countries_info_by_multiple_lang(self):
         countries_code_search = CountryInfoSearch(['rus', 'co', 'no', 'aw'])
