@@ -74,11 +74,15 @@ class CountryInfoSearch(object):
                                                           'Area(sqKM)', 'Codes',
                                                           'Currency', 'Lang'))
         for item in search_data:
-            print("{:<20} {:<20} {:<15} {:<18} {:<15d} {:<15} {:<15} {:<25} {:<15}".format(item['name'],
-                                          item['capital'], item['region'],
-                                          item['subregion'], item['population'],
-                                          item['area'], str(item['callingCodes']),
-                                          str(item['currencies']),str(item['languages'])))
+            try:
+                print("{:<20} {:<20} {:<15} {:<18} {:<15d} {:<15f} {:<15s} {:<25s} {:<15s}".format(item['name'],
+                                              item['capital'], item['region'],
+                                              item['subregion'], int(item['population']),
+                                              float(item['area']), str(item['callingCodes']),
+                                              str(item['currencies']),str(item['languages'])))
+            except TypeError:
+                continue
+
 
 class RefinedSearch(CountryInfoSearch):
     def __init__(self, options, refine_params):
@@ -87,8 +91,8 @@ class RefinedSearch(CountryInfoSearch):
 
 
 def main():
-    kenya_data = CountryInfoSearch('1')
-    results = kenya_data.get_country_info_by_calling_code.get_requested_data()
+    kenya_data = CountryInfoSearch('africa')
+    results = kenya_data.get_country_info_by_region_or_sub_region('region', 'africa').get_requested_data()
     kenya_data.print_data(results)
 
 
