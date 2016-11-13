@@ -30,7 +30,7 @@ class CountryInfoTestCase(unittest.TestCase):
         kenya_data = CountryInfoSearch('204')
         results = kenya_data.get_country_info_by_calling_code.get_requested_data()
         error = kenya_data.print_data(results)
-        self.assertEqual(error, 'Data for https://restcountries.eu/rest/v1/callingcode/204 Not Found !!')
+        self.assertEqual(error, 'Data for https://restcountries.eu/rest/v1/callingcode/204 Not Found !! "404 Error"')
 
 if __name__ == '__main__':
     unittest.main()
