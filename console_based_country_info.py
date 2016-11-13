@@ -64,11 +64,24 @@ class CountryInfoSearch(object):
 
     def get_requested_data(self):
         import requests
-        response = requests.get(self._base_url)
-        search_results = response.json()
-        return search_results
+        try:
+            response = requests.get(self._base_url)
+            search_results = response.json()
+            return search_results
+        except requests.ConnectionError:
+            search_results = {'status':'ConnectionError!! internet connection'}
+            return search_results
+
 
     def print_data(self, search_data):
+        if type(search_data) == dict:
+            try:
+                if search_data['status'] in [404, 'ConnectionError!! internet connection']:
+                    print('Data for {} Not Found !!, "{} Error"'.format(self.get_url, search_data['status']))
+                    return ('Data for {} Not Found !! "{} Error"'.format(self.get_url, search_data['status']))
+            except KeyError:
+                pass
+
         print("{:<30} {:<20} {:<15} {:<18} {:<15} {:<15} {:<15} {:<25} {:<10}".format('Country', 'Capital',
                                                           'Region', 'SubReg', 'Population',
                                                           'Area(sqKM)', 'Codes',
@@ -88,9 +101,6 @@ class CountryInfoSearch(object):
                                 str(search_data['area']),str(search_data['callingCodes']),
                                 str(search_data['currencies']), str(search_data['languages'])))
 
-
-
-
 class RefinedSearch(CountryInfoSearch):
     def __init__(self, options, refine_params):
         self._refine_params = refine_params
@@ -98,8 +108,8 @@ class RefinedSearch(CountryInfoSearch):
 
 
 def main():
-    kenya_data = CountryInfoSearch('rus')
-    results = kenya_data.get_country_info_by_country_codes.get_requested_data()
+    kenya_data = CountryInfoSearch('1')
+    results = kenya_data.get_country_info_by_calling_code.get_requested_data()
     kenya_data.print_data(results)
 
 
