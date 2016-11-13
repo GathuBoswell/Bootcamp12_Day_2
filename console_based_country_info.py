@@ -53,13 +53,13 @@ class CountryInfoSearch(object):
         self._base_url = base_url.format(self._options)
         return self
 
-    def get_country_info_by_region_or_sub_region(self, reg_or_sub):
+    def get_country_info_by_region_or_sub_region(self, reg_or_sub, name):
         if reg_or_sub == 'region':
             base_url = 'https://restcountries.eu/rest/v1/region/{}'
-            self._base_url = base_url.format(self._options)
+            self._base_url = base_url.format(name)
         elif reg_or_sub == 'sub':
             base_url = 'https://restcountries.eu/rest/v1/subregion/{}'
-            self._base_url = base_url.format(self._options)
+            self._base_url = base_url.format(name)
         return self
 
     def get_requested_data(self):
