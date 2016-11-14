@@ -4,6 +4,7 @@ This repo contains the following tasks for boot camp day two:
 - [x] [Word Count lab](https://github.com/GathuBoswell/Bootcamp12_Day_2/blob/master/word_count.py)
 - [x] [Max and Min lab](https://github.com/GathuBoswell/Bootcamp12_Day_2/blob/master/max_min_number.py)
 - [x] [ Http and Web lab](https://github.com/GathuBoswell/Bootcamp12_Day_2/blob/master/console_based_country_info.py)
+
 #### console_based_country_info.py 
 is a console app to return country
 or countries data from [Rest Countries API](http://restcountries.eu/)
