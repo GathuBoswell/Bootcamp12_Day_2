@@ -4,13 +4,21 @@ def words(word_list):
     :param word_list:
     :return {'word': word_occurrence_count}:
     """
-    words = {}
+    word_count = {}
     for word in [w for w in word_list.split()]:
         try:
-            if words[word]:
-                words[word] += 1
-        except KeyError:
-            words[word] = 1
-    return words
+            word = int(word)
+            try:
+                if word_count[word]:
+                    word_count[word] += 1
+            except KeyError:
+                word_count[word] = 1
+        except ValueError:
+            try:
+                if word_count[word]:
+                    word_count[word] += 1
+            except KeyError:
+                word_count[word] = 1
+    return word_count
 
-print(words('¡Hola! ¿Qué tal? Привет!'))
+print(words('testing 1 2 testing'))
