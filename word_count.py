@@ -21,4 +21,7 @@ def words(word_list):
                 word_count[word] = 1
     return word_count
 
-print(words('testing 1 2 testing'))
+def main():
+    print(words('testing 1 2 testing'))
+
+if __name__ == '__main__':main()
