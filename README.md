@@ -22,5 +22,54 @@ Depending on several search criteria as follows;
 It has two parts;
 - [x] Simple Interface
 - [ ] Advance Interface - for data refining (Not fully implemented)
+
 ###### Usage:
+
+When the program is run, it presents the user with choices;
+
+```
+         Welcome to Country info Data Search   
+         ###################################
+     Please select a Search criteria choice below:
+
+1. By country name
+2. By country code
+3. "all" for all countries
+4. By region
+5. By subregion
+6. By capital city
+7. By Calling code
+8. By ISO 639-1 Language e.g "en", for English
+
+
+Enter Your Choice:_
+```
+
+_*Sample output*_
+
+```
+         Welcome to Country info Data Search
+
+         ###################################
+
+     Please select a Search criteria choice below:
+
+1. By country name
+2. By country code
+3. "all" for all countries
+4. By region
+5. By subregion
+6. By capital city
+7. By Calling code
+8. By ISO 639-1 Language e.g "en", for English
+
+
+Enter Your Choice:6
+Enter The country Capital City: nairobi
+
+
+
+Country    Capital     Region    SubReg          Population   Area(sqKM)   Codes    Currency    Lang
+Kenya      Nairobi     Africa    Eastern Africa  46050000     580367.0     ['254']   ['KES']    ['en', 'sw']
+```
 
