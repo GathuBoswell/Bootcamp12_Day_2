@@ -21,7 +21,7 @@ Depending on several search criteria as follows;
 
 It has two parts;
 - [x] Simple Interface
-- [ ] Advance Interface - for data refining (Not fully implemented)
+- [ ] Advanced Interface - for data refining (Not fully implemented)
 
 ###### Usage:
 
@@ -76,4 +76,4 @@ Kenya      Nairobi     Africa    Eastern Africa  46050000     580367.0     ['254
 ### Note
 
 The adavnced User interface has not been fully implemented hence it 
-is not show on the above example.
+is not shown on the above example.
