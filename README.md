@@ -5,8 +5,12 @@ This repo contains the following tasks for boot camp day two:
 - [x] [Max and Min lab](https://github.com/GathuBoswell/Bootcamp12_Day_2/blob/master/max_min_number.py)
 - [x] [ Http and Web lab](https://github.com/GathuBoswell/Bootcamp12_Day_2/blob/master/console_based_country_info.py)
 
-#### console_based_country_info.py 
-is a console app to return country
+#### console_based_country_info.py
+
+**programming language: Python**
+**python version: 3.x**
+
+It is a console app written in python to return country
 or countries data from [Rest Countries API](http://restcountries.eu/)
 Depending on several search criteria as follows;
 * All countries info - will return info for all countries
@@ -22,6 +26,7 @@ Depending on several search criteria as follows;
 It has two parts;
 - [x] Simple Interface
 - [ ] Advanced Interface - for data refining (Not fully implemented)
+
 
 ###### Usage:
 
