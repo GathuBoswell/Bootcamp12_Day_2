@@ -7,4 +7,11 @@ def find_max_min(num_list):
     :param num_list:
     :return [max, min]:
     """
-    pass
+    max_num = num_list[0]
+    min_num = num_list[0]
+    for i in range(len(num_list)):
+        if num_list[i] > max_num:
+            max_num = num_list[i]
+        max_num = max_num
+    return max_num
+
