@@ -73,3 +73,7 @@ Country    Capital     Region    SubReg          Population   Area(sqKM)   Codes
 Kenya      Nairobi     Africa    Eastern Africa  46050000     580367.0     ['254']   ['KES']    ['en', 'sw']
 ```
 
+### Note
+
+The adavnced User interface has not been fully implemented hence it 
+is not show on the above example.
