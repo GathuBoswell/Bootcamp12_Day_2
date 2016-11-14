@@ -87,6 +87,10 @@ class CountryInfoSearch(object):
                                                           'Region', 'SubReg', 'Population',
                                                           'Area(sqKM)', 'Codes',
                                                           'Currency', 'Lang'))
+        print("{:<30} {:<20} {:<15} {:<18} {:<15} {:<15} {:<15} {:<25} {:<10}".format('-------', '-------',
+                                                          '------', '------', '----------',
+                                                          '----------', '-----',
+                                                          '--------', '----'))
         if type(search_data) == list:
             for item in search_data:
                 print("{:<30.29s} {:<20} {:<15} {:<18} {:<15d} {:<15} {:<15s} {:<25s} {:<10s}".format(item['name'],
@@ -112,21 +116,25 @@ class RefinedSearch(CountryInfoSearch):
     def refine_search_by_currency(self, currency):
         # should handle type checking for the currency
         # and all errors that would result
+        currency = str(currency).upper()
         return currency
 
     def refine_search_by_region(self, region):
         # should handle type checking for the region
         # and all errors that would result
+        region = str(region).capitalize()
         return region
 
     def refine_search_by_subregion(self, subregion):
         # should handle type checking for the subregion
         # and all errors that would result
+        subregion = str(subregion).capitalize()
         return subregion
 
     def refine_search_by_capital(self, capital):
         # should handle type checking for the capital
         # and all errors that would result
+        capital = str(capital).capitalize()
         return capital
 
     def refine_search_by_lang(self, lang):
@@ -151,8 +159,9 @@ class RefinedSearch(CountryInfoSearch):
 
 
 def main():
-    print('         Welcome to Country info Data Search \n')
-    print('         ################################### \n')
+    print('\n\n')
+    print('         Welcome to Country info Data Search ')
+    print('         ###################################\n ')
     print('     Please select a Search criteria choice below: \n')
     print('1. By country name\n2. By country code'
           '\n3. "all" for all countries\n4. By region\n'
@@ -167,7 +176,7 @@ def main():
         results = search_data.get_specific_country_info.get_requested_data()
         search_data.print_data(results)
     elif search_param == 2:
-        code = input('Enter The country code e.g 254 for Kenya: ')
+        code = input('Enter The country code e.g ke for Kenya: ')
         print('\n\n')
         search_data = CountryInfoSearch(str(code))
         results = search_data.get_country_info_by_country_codes.get_requested_data()
