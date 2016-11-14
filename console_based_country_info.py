@@ -168,49 +168,49 @@ def main():
           '5. By subregion\n6. By capital city\n7. By Calling code\n'
           '8. By ISO 639-1 Language e.g "en", for English')
     print('\n')
-    search_param = int(input('Enter Your Choice:'))
-    if search_param == 1:
+    search_param = input('Enter Your Choice: ')
+    if search_param == '1':
         country = input('Enter The country name: ')
         print('\n\n\n')
         search_data = CountryInfoSearch(country)
         results = search_data.get_specific_country_info.get_requested_data()
         search_data.print_data(results)
-    elif search_param == 2:
+    elif search_param == '2':
         code = input('Enter The country code e.g ke for Kenya: ')
         print('\n\n')
         search_data = CountryInfoSearch(str(code))
         results = search_data.get_country_info_by_country_codes.get_requested_data()
         search_data.print_data(results)
-    elif search_param == 3:
+    elif search_param == '3':
         print('\n\n')
         search_data = CountryInfoSearch('all')
         results = search_data.get_all_countries_info.get_requested_data()
         search_data.print_data(results)
-    elif search_param == 4:
+    elif search_param == '4':
         region = input('Enter The Region e.g Africa: ')
         print('\n\n')
         search_data = CountryInfoSearch(region)
         results = search_data.get_country_info_by_region_or_sub_region('region').get_requested_data()
         search_data.print_data(results)
-    elif search_param == 5:
+    elif search_param == '5':
         subregion = input('Enter The Subregion e.g Eastern Africa: ')
         print('\n\n')
         search_data = CountryInfoSearch(subregion)
         results = search_data.get_country_info_by_region_or_sub_region('subregion').get_requested_data()
         search_data.print_data(results)
-    elif search_param == 6:
+    elif search_param == '6':
         capital = input('Enter The country Capital City: ')
         print('\n\n')
         search_data = CountryInfoSearch(capital)
         results = search_data.get_country_info_by_country_capital.get_requested_data()
         search_data.print_data(results)
-    elif search_param == 7:
+    elif search_param == '7':
         calling_code = input('Enter The calling code e.g 1 for america: ')
         print('\n\n')
         search_data = CountryInfoSearch(str(calling_code))
         results = search_data.get_country_info_by_calling_code.get_requested_data()
         search_data.print_data(results)
-    elif search_param == 8:
+    elif search_param == '8':
         lang = input('Enter The language e.g sw for swahili: ')
         print('\n\n')
         search_data = CountryInfoSearch(lang)
